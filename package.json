@@ -12,7 +12,8 @@
 		"cors": "^2.8.5",
 		"dotenv": "^8.6.0",
 		"express": "^4.17.2",
-		"mongoose": "^6.1.2"
+		"mongoose": "^6.1.2",
+		"multer": "^1.4.4"
 	},
 	"repository": {
 		"url": "https://github.com/maxiconstancio/boilerplate-project-exercisetracker"

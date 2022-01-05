@@ -54,13 +54,13 @@ app.post("/api/users", function (req, res) {
 });
 
 // New Exercise
-app.post("/api/users/:_id/exercises", function (req, res) {
+app.post("/api/users/:_id/exercises", async (req, res) => {
   let userId = req.params["_id"];
   
   
   let exerUser;
   if (userId === "") {
-    req.json({ error: "field username is required" });
+    res.json({ error: "field username is required" });
   }
   userModel.findOne({ _id: userId }, function (err, data) {
     if (err) return res.json(err.message);
@@ -71,7 +71,7 @@ app.post("/api/users/:_id/exercises", function (req, res) {
       let dateExercise  = req.body.date != undefined ? new Date (req.body.date).toDateString() : new Date().toDateString();
       //console.log(dateExercise) 
       if (dateExercise == "Invalid Date") {
-        console.log(req.body.date)
+        //console.log(req.body.date)
         return res.json ("Invalid Date")
       }
       let exercises = new exerciseModel({
@@ -100,8 +100,8 @@ app.get("/api/users", function (req, res) {
 //Retrieve a full exercise log of any user
 
 app.get('/api/users/:_id/logs',async (req, res) => {
-  console.log(req.query)
-  console.log(req.params)
+  //console.log(req.query)
+  //(req.params)
   const { to, limit, from } = req.query;
    //if (typeof(from) != Date&&(from != null)) return res.json("Invalid Date")
   
@@ -150,7 +150,7 @@ try {
           count:log.length,
           log,
     }
-    console.log(response);
+      //console.log(response);
         // console.log(response)
     return res.json(response)
     
